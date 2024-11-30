@@ -35,7 +35,7 @@ jobs:
           wget -O /tmp/sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64
           chmod +x /tmp/sops
           sudo cp /tmp/sops /usr/local/bin/sops
-      - name: Decrypt and source environment variables
+      - name: Decrypt environment variables
         run: |
           sops -d --in-place .github/workflows/secrets.env
       - name: Decrypt configurations
@@ -47,6 +47,6 @@ jobs:
           source .github/workflows/secrets.env
           make tf-plan
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
+        # if: github.ref == 'refs/heads/main'
         run: |
           make tf-apply
