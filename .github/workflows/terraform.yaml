@@ -47,6 +47,6 @@ jobs:
           source .github/workflows/secrets.env
           make tf-plan
       - name: Terraform Apply
-        # if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           make tf-apply
