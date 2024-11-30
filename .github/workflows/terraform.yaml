@@ -38,13 +38,13 @@ jobs:
       - name: Decrypt and source environment variables
         run: |
           sops -d --in-place .github/workflows/secrets.env
-          source .github/workflows/secrets.env
       - name: Decrypt configurations
         run: |
           chmod +x ./scripts/decrypt.sh
           make decrypt-configs
       - name: Terraform Plan
         run: |
+          source .github/workflows/secrets.env
           make tf-plan
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
