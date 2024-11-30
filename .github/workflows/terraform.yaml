@@ -37,6 +37,7 @@ jobs:
           sudo cp /tmp/sops /usr/local/bin/sops
       - name: Decrypt configurations
         run: |
+          chmod +x ./scripts/decrypt-configs.sh
           make decrypt-configs
       - name: Terraform Plan
         run: |
