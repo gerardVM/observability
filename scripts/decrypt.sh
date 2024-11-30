@@ -23,7 +23,7 @@ fi
 # Decrypt all encrypted files in the specified path with the given format
 find "$TARGET_PATH" -type f -name "*.enc.$FILE_FORMAT" | while read -r file; do
   echo "Decrypting $file..."
-  sops -d --input-type "$FILE_FORMAT" "$file" > "${file%.enc.$FILE_FORMAT}.$FILE_FORMAT"
+  sops -d "$file" > "${file%.enc.$FILE_FORMAT}.$FILE_FORMAT" && rm "$file"
   echo "Decrypted file saved as ${file%.enc.$FILE_FORMAT}.$FILE_FORMAT"
 done
 
