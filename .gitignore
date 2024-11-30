@@ -1,0 +1,4 @@
+Makefile.local
+.terraform*
+*.out
+secrets.dec.env

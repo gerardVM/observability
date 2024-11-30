@@ -1,0 +1,37 @@
+organization:
+  url: "https://gerardvm.grafana.net/"
+  slug: "gerardvm"
+  region: "us"
+
+  stacks:
+    gerardvm:
+      aws_integration_accounts:
+        gerard-certifications: "877759700856"
+      service_accounts:
+        - name: "admin"
+          role: "Admin"
+          disabled: false
+          tokens: 
+            - name: "admin_key"
+
+  access_policies:
+    metrics:
+      realm: "gerardvm"
+      scopes:
+        - metrics:read
+        - metrics:write
+        - logs:write
+        - traces:write
+      label_policies:
+        - key: "selector"
+          value: "{namespace=\"default\"}" # Check properly what this is supposed to be
+      tokens:
+        - name: "metrics_token"
+    integrations:
+      realm: "organization"
+      scopes:
+        - integration-management:write
+        - integration-management:read
+        - stacks:read
+      tokens:
+        - name: "integrations_token"
