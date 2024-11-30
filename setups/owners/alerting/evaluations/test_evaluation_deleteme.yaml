@@ -3,7 +3,7 @@ groups:
   - orgId: 1
     imported: false
     name: test_evaluation_deleteme
-    folder: platform
+    folder: owners
     interval: 1m
     rules:
       - title: rule1
@@ -82,4 +82,4 @@ groups:
         for: 1m
         isPaused: false
         notification_settings:
-          receiver: platform_email
+          receiver: personal_email

@@ -1,10 +1,10 @@
 locals {
   dashboards = flatten([
-    for folder_key, folder_value in local.directories : [
-      for file in fileset("${folder_value}/dashboards", "*.json") : {
-        folder     = folder_key
+    for folder in local.directories : [
+      for file in fileset("../../setups/${folder}/dashboards", "*.json") : {
+        folder     = folder
         name       = replace(file, ".json", "")
-        definition = jsondecode(file("${folder_value}/dashboards/${file}"))
+        definition = jsondecode(file("../../setups/${folder}/dashboards/${file}"))
   }]])
 }
 

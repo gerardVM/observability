@@ -20,11 +20,10 @@ terraform {
 }
 
 provider "aws" {
-  # region = var.region
   region = "eu-west-3"
   assume_role {
-    role_arn     = "arn:aws:iam::877759700856:role/provisioner"
-    session_name = "observability_repository"
+    role_arn     = "arn:aws:iam::${local.config.permissions_setup.aws_account_id}:role/${local.config.permissions_setup.aws_assume_role}"
+    session_name = "observability"
   }
 }
 
@@ -36,15 +35,13 @@ provider "grafana" {
 provider "grafana" {
   alias = "stack"
   url   = local.config.organization.url
-  auth  = grafana_cloud_stack_service_account_token.sa_token["gerardvm-admin-admin_key"].key
+  auth  = grafana_cloud_stack_service_account_token.sa_token[local.config.permissions_setup.stack_key].key
 }
 
 provider "grafana" {
   alias                       = "cloud_provider_integration"
-  # url                         = local.config.organization.url                                                       # Grafana instance URL
-  # auth                        = grafana_cloud_stack_service_account_token.sa_token["gerardvm-admin-admin_key"].key  # Standard Grafana API Key
-  cloud_provider_url          = "https://connections-api-prod-us-east-0.grafana.net"                                # URL for the Grafana Cloud Provider API
-  cloud_provider_access_token = grafana_cloud_access_policy_token.ap_token["integrations-integrations_token"].token # aws_integration token
+  cloud_provider_url          = "https://connections-api-prod-us-east-0.grafana.net"
+  cloud_provider_access_token = grafana_cloud_access_policy_token.ap_token[local.config.permissions_setup.cloud_integration_token].token
 }
 
 variable "grafana_cloud_api_key" {

@@ -10,6 +10,11 @@ locals {
   }]])
 }
 
+data "grafana_cloud_organization" "current" {
+  slug = local.config.organization.slug
+
+  provider = grafana.cloud
+}
 
 resource "grafana_cloud_access_policy" "access_policy" {
   for_each = local.access_policies

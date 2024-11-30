@@ -9,11 +9,11 @@ resource "aws_iam_role" "grafana_cloud" {
         Effect = "Allow"
         Sid    = ""
         Principal = {
-          AWS = "arn:aws:iam::${local.config.grafana_cloud_account_id}:root"
+          AWS = "arn:aws:iam::${local.config.permissions_setup.grafana_cloud_account_id}:root"
         }
         Condition = {
           StringEquals = {
-            "sts:ExternalId" = local.config.grafana_cloud_external_id
+            "sts:ExternalId" = local.config.permissions_setup.grafana_cloud_external_id
           }
         }
       },

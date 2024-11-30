@@ -1,16 +1,16 @@
 locals {
   alerting_evaluations = flatten([
-    for folder_key, folder_value in local.directories : [
-      for file in fileset("${folder_value}/alerting/evaluations", "*.yaml") : {
-        folder     = folder_key
+    for folder in local.directories : [
+      for file in fileset("../../setups/${folder}/alerting/evaluations", "*.yaml") : {
+        folder     = folder
         name       = replace(file, ".yaml", "")
-        definition = yamldecode(file("${folder_value}/alerting/evaluations/${file}")).groups[0] # This setup enables support for unmodified Grafana import files
+        definition = yamldecode(file("../../setups/${folder}/alerting/evaluations/${file}")).groups[0] # This setup enables support for unmodified Grafana import files
   }]])
 
   alerting_contact_points = flatten([
-    for folder_key, folder_value in local.directories : [
-      for contact_point in yamldecode(file("${folder_value}/alerting/contacts.yaml")).contactPoints : { # This setup enables support for unmodified Grafana import files
-        folder     = folder_key
+    for folder in local.directories : [
+      for contact_point in yamldecode(file("../../setups/${folder}/alerting/contacts.yaml")).contactPoints : { # This setup enables support for unmodified Grafana import files
+        folder     = folder
         name       = contact_point.name
         definition = contact_point.receivers
   }]])
@@ -25,7 +25,7 @@ resource "grafana_rule_group" "alert_rules" {
   disable_provenance = true # Deny modifying the rule group from other sources than Terraform or the Grafana API
   name               = each.value.name
   interval_seconds   = tonumber(regex("^\\d+", each.value.definition.interval)) * lookup(local.seconds, regex("\\D+$", each.value.definition.interval))
-  org_id             = 1
+  # org_id             = 1
 
   dynamic "rule" {
     for_each = each.value.definition.rules
