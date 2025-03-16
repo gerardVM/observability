@@ -23,10 +23,10 @@ traces-test:
 	@cd ${TRACES_DIR} && docker-compose up
 
 encrypt-config:	
-	@scripts/encrypt.sh setups/owners/alerting/evaluations yaml
-	@scripts/encrypt.sh setups/owners/dashboards json
+	@scripts/encrypt.sh setups/project_0/alerting/evaluations yaml
+	@scripts/encrypt.sh setups/project_0/dashboards json
 	@sops -e --kms ${KMS_KEY} --input-type yaml terraform/grafana/config.yaml > terraform/grafana/config.enc.yaml
-	@sops -e --kms ${KMS_KEY} --input-type yaml setups/owners/alerting/contacts.yaml > setups/owners/alerting/contacts.enc.yaml
+	@sops -e --kms ${KMS_KEY} --input-type yaml setups/project_0/alerting/contacts.yaml > setups/project_0/alerting/contacts.enc.yaml
 
 decrypt-configs:
 	@scripts/decrypt.sh setups/owners/alerting/evaluations yaml

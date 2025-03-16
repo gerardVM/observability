@@ -1,0 +1,27 @@
+apiVersion: ENC[AES256_GCM,data:tw==,iv:zLUXdzsvAH16iaKa33VXEGjSLNmj0fcHl+O5Eu5/iIk=,tag:3qkQShz9FADDodL8TbQexg==,type:int]
+contactPoints:
+    - orgId: ENC[AES256_GCM,data:jg==,iv:i3d3o7jBRupfaQoapTFQetSctECRf+UQ0Hd25FSzvoM=,tag:Lpj4/TEDOVke3IycK8hn5Q==,type:int]
+      name: ENC[AES256_GCM,data:aKvUnupefRX/JEMwOuY=,iv:/S0irDWWPklW1QkTWctug4dBAb4KS3K5KOOPRZeJogg=,tag:Q8zK/7kZkfxGqjq0fhjI7Q==,type:str]
+      receivers:
+        - type: ENC[AES256_GCM,data:fRFQUa4=,iv:bCh5MKqVSoLm8CoCEVUfUJFz6YGdBI3/LIv8eRNBxJ4=,tag:5iLKyfHZmJ+pfRRYTg38Dw==,type:str]
+          settings:
+            addresses: ENC[AES256_GCM,data:ZnHbdwZKtZGJFP4gQDdU2y1Q2zyZ/38n,iv:T7qQlo9WJFunfEwN2yd2f2jVtVTrEjiI9GCSBGH6zpM=,tag:ap4Tk7Kj1+YEEY8FoT3NSQ==,type:str]
+            message: ENC[AES256_GCM,data:vsBL0swQrAtFJWH49Ihr67WzIJOoh5s11qnJVLrPjvCbjP4F5O5p8A==,iv:/uxN0grG8KopbUlYkVvRVhQMoAtkK55DvS5bk7hN0yo=,tag:BnSoH3aVApiUh9rcoD3Zpg==,type:str]
+            singleEmail: ENC[AES256_GCM,data:9GxqDg==,iv:xXStXkvGDx895peuJfAbWqln3q4sLvhg/i/exh2oY9w=,tag:GQWG/FrXiIp3apq2LcKC6A==,type:bool]
+            subject: ENC[AES256_GCM,data:eMtz8HRuUH2pX5mQj4CoHwtIZi8d26zk8E46KAOw8Gg=,iv:nWjTuUPik/OlenkTZYvoRGe2NuIOJ0mJ8fGEGZxOCTQ=,tag:a4cpGWuvGrPK2wTci9l98g==,type:str]
+          disableResolveMessage: ENC[AES256_GCM,data:7aKoUy0=,iv:zFCHU/WngUh7ApSfFMaJWLGVvEXS7axyus4GlFogw7Y=,tag:9VlPDuqxboMYwSgITQc87w==,type:bool]
+sops:
+    kms:
+        - arn: arn:aws:kms:eu-west-3:877759700856:key/b3ac1035-b1f6-424a-bfe9-a6ec592e7487
+          created_at: "2025-03-16T14:43:34Z"
+          enc: AQICAHiFgQKnfZQbS0qksdcKnEcqfA3yd0cfbwGnH+L5HeKvdgHAoue+laGJ2U28Mv356BMWAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMd7c1xB27YTTZ4ddFAgEQgDsV9qGMKP1b2tfKLdUJfogOsQSQu2uniqqdfe4bEt3ZpY3QyTJykpMR8OF/xvmgjDJ/wV1Vwulzb4KZJA==
+          aws_profile: ""
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-03-16T14:43:35Z"
+    mac: ENC[AES256_GCM,data:iTOtSMJUP0wNGmgOH7nuzvW7OkYHE58GGdeuUhhNi4caZbwMRnGFhZgRoJyWkG9Z3RR+wFTOLlIuEr+rLI6XHa48VMgDaCaEUxkBn98ffFzXCvnfm+mxW2vGBMRWLqu/2v71JBi68BAXiZtb0B7a9s+fJ4TaJLp7YD+oSRTVDsI=,iv:DK5pLmGWHP5WPelw5RJFQHl5B+f5R0a7Zdm89+HTBvo=,tag:eeBY/O5VDZP67rSsMDjWOg==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.9.1
