@@ -74,17 +74,17 @@ locals {
     "AWS/Billing" = {
       "EstimatedCharges" = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
     }
-    # "AWS/SQS" = {
-    #   "ApproximateAgeOfOldestMessage"         = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "ApproximateNumberOfMessagesDelayed"    = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "ApproximateNumberOfMessagesNotVisible" = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "ApproximateNumberOfMessagesVisible"    = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "NumberOfEmptyReceives"                 = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "NumberOfMessagesDeleted"               = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "NumberOfMessagesReceived"              = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "NumberOfMessagesSent"                  = ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    #   "SentMessageSize"                       = ["Sum", "Maximum", "Minimum", "Average", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
-    # }
+    "AWS/SQS" = {
+      "ApproximateAgeOfOldestMessage"         = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "ApproximateNumberOfMessagesDelayed"    = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "ApproximateNumberOfMessagesNotVisible" = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "ApproximateNumberOfMessagesVisible"    = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "NumberOfEmptyReceives"                 = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "NumberOfMessagesDeleted"               = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "NumberOfMessagesReceived"              = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "NumberOfMessagesSent"                  = ["Average"] # ["Average", "Maximum", "Minimum", "Sum", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+      "SentMessageSize"                       = ["Sum"] # ["Sum", "Maximum", "Minimum", "Average", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
+    }
     "AWS/Lambda" = {
       "Invocations"                                = ["Sum"] # ["Sum", "Maximum", "Minimum", "Average", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
       "Errors"                                     = ["Sum"] # ["Sum", "Maximum", "Minimum", "Average", "SampleCount", "p50", "p75", "p90", "p95", "p99"]
