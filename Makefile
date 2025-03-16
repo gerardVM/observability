@@ -28,5 +28,5 @@ encrypt-config:
 decrypt-configs:
 	@scripts/decrypt.sh setups/owners/alerting/evaluations yaml
 	@scripts/decrypt.sh setups/owners/dashboards json
-	@sops -d terraform/grafana/config.enc.yaml > terraform/grafana/config.yaml && rm terraform/grafana/config.enc.yaml
-	@sops -d setups/owners/alerting/contacts.enc.yaml > setups/owners/alerting/contacts.yaml && rm setups/owners/alerting/contacts.enc.yaml
+	@sops -d terraform/grafana/config.enc.yaml > terraform/grafana/config.yaml
+	@sops -d setups/owners/alerting/contacts.enc.yaml > setups/owners/alerting/contacts.yaml
