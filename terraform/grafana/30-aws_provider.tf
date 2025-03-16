@@ -1,11 +1,11 @@
 locals {
   aws_integration_accounts = flatten([
     for stack in local.stacks : [
-      for aws_account_key, aws_account_value in stack.aws_integration_accounts : {
+      for integration_account in stack.aws_integration_accounts : {
         stack   = stack.name
-        name    = aws_account_key
-        id      = aws_account_value.id
-        regions = aws_account_value.regions
+        name    = integration_account.name
+        id      = integration_account.id
+        regions = integration_account.regions
   }]])
 }
 
@@ -24,6 +24,7 @@ resource "grafana_cloud_provider_aws_cloudwatch_scrape_job" "cw_scrape_job" {
 
   stack_id                = grafana_cloud_stack.stack[each.value.stack].id
   name                    = each.key
+  enabled                 = true
   aws_account_resource_id = grafana_cloud_provider_aws_account.provider[each.key].resource_id
   export_tags             = true
 
