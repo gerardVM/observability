@@ -2,3 +2,8 @@ Makefile.local
 .terraform*
 *.out
 secrets.dec.env
+
+*.yaml
+*.json
+!*.enc.yaml
+!*.enc.json
