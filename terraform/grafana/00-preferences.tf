@@ -20,7 +20,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-3"
+  region = "us-east-1"
   assume_role {
     role_arn     = "arn:aws:iam::${local.config.permissions_setup.aws_account_id}:role/${local.config.permissions_setup.aws_assume_role}"
     session_name = "observability"
@@ -33,8 +33,8 @@ provider "grafana" {
 }
 
 provider "grafana" {
-  alias = "stack"
-  url   = local.config.organization.url
+  alias = "stack_0"
+  url   = local.config.organization.stacks[0].url
   auth  = grafana_cloud_stack_service_account_token.sa_token[local.config.permissions_setup.stack_key].key
 }
 

@@ -19,7 +19,7 @@ locals {
 
 resource "grafana_rule_group" "alert_rules" {
   for_each = { for rule in local.alerting_evaluations : "${rule.folder}-${rule.name}" => rule }
-  provider = grafana.stack
+  provider = grafana.stack_0
 
   folder_uid         = grafana_folder.teams[each.value.folder].uid
   disable_provenance = true # Deny modifying the rule group from other sources than Terraform or the Grafana API
@@ -73,7 +73,7 @@ resource "grafana_rule_group" "alert_rules" {
 
 resource "grafana_contact_point" "contact_point" {
   for_each = { for contact_point in local.alerting_contact_points : contact_point.name => contact_point }
-  provider = grafana.stack
+  provider = grafana.stack_0
 
   name               = each.value.name
   disable_provenance = true # Deny modifying the contact point from other sources than Terraform or the Grafana API

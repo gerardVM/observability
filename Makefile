@@ -15,18 +15,21 @@ tf-plan: tf-init
 tf-apply: tf-init
 	@cd ${TF_DIR} && terraform apply ${TF_COMPONENT}.out
 
+tf-fmt:
+	@cd ${TF_DIR} && terraform fmt
+
 traces-test:
 	@cd ${TRACES_DIR} && docker-compose build --no-cache
 	@cd ${TRACES_DIR} && docker-compose up
 
 encrypt-config:	
-	@scripts/encrypt.sh setups/owners/alerting/evaluations yaml
-	@scripts/encrypt.sh setups/owners/dashboards json
+	@scripts/encrypt.sh setups/project_0/alerting/evaluations yaml
+	@scripts/encrypt.sh setups/project_0/dashboards json
 	@sops -e --kms ${KMS_KEY} --input-type yaml terraform/grafana/config.yaml > terraform/grafana/config.enc.yaml
-	@sops -e --kms ${KMS_KEY} --input-type yaml setups/owners/alerting/contacts.yaml > setups/owners/alerting/contacts.enc.yaml
+	@sops -e --kms ${KMS_KEY} --input-type yaml setups/project_0/alerting/contacts.yaml > setups/project_0/alerting/contacts.enc.yaml
 
 decrypt-configs:
-	@scripts/decrypt.sh setups/owners/alerting/evaluations yaml
-	@scripts/decrypt.sh setups/owners/dashboards json
-	@sops -d terraform/grafana/config.enc.yaml > terraform/grafana/config.yaml && rm terraform/grafana/config.enc.yaml
-	@sops -d setups/owners/alerting/contacts.enc.yaml > setups/owners/alerting/contacts.yaml && rm setups/owners/alerting/contacts.enc.yaml
+	@scripts/decrypt.sh setups/project_0/alerting/evaluations yaml
+	@scripts/decrypt.sh setups/project_0/dashboards json
+	@sops -d terraform/grafana/config.enc.yaml > terraform/grafana/config.yaml
+	@sops -d setups/project_0/alerting/contacts.enc.yaml > setups/project_0/alerting/contacts.yaml
