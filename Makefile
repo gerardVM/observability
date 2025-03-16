@@ -29,7 +29,7 @@ encrypt-config:
 	@sops -e --kms ${KMS_KEY} --input-type yaml setups/project_0/alerting/contacts.yaml > setups/project_0/alerting/contacts.enc.yaml
 
 decrypt-configs:
-	@scripts/decrypt.sh setups/owners/alerting/evaluations yaml
-	@scripts/decrypt.sh setups/owners/dashboards json
+	@scripts/decrypt.sh setups/project_0/alerting/evaluations yaml
+	@scripts/decrypt.sh setups/project_0/dashboards json
 	@sops -d terraform/grafana/config.enc.yaml > terraform/grafana/config.yaml
-	@sops -d setups/owners/alerting/contacts.enc.yaml > setups/owners/alerting/contacts.yaml
+	@sops -d setups/project_0/alerting/contacts.enc.yaml > setups/project_0/alerting/contacts.yaml
