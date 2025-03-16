@@ -1,5 +1,5 @@
 locals {
-  directories = toset([ for path in fileset("../../setups", "**") : split("/", path)[0] ])
+  directories = toset([for path in fileset("../../setups", "**") : split("/", path)[0]])
 }
 
 resource "grafana_folder" "teams" {

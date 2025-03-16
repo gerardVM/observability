@@ -44,8 +44,8 @@ resource "aws_iam_role_policy" "cloudwatch_integration" {
           "storagegateway:ListGateways",
           "storagegateway:ListTagsForResource"
         ]
-        Effect    = "Allow"
-        Resource  = "*"
+        Effect   = "Allow"
+        Resource = "*"
       },
     ]
   })
