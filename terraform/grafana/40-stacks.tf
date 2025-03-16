@@ -2,9 +2,9 @@ locals {
   stacks = local.config.organization.stacks
 
   service_accounts = flatten([
-    for key, value in local.stacks : [
-      for service_account in value.service_accounts : {
-        stack    = key
+    for stack in local.stacks : [
+      for service_account in stack.service_accounts : {
+        stack    = stack.name
         name     = service_account.name
         role     = service_account.role
         disabled = service_account.disabled
@@ -22,7 +22,7 @@ locals {
 
 
 resource "grafana_cloud_stack" "stack" {
-  for_each = local.stacks
+  for_each = { for stack in local.stacks : stack.name => stack }
 
   name        = "${each.key}.grafana.net"
   slug        = each.key
