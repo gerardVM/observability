@@ -10,7 +10,7 @@ locals {
 
 resource "grafana_dashboard" "dashboard" {
   for_each = { for dashboard in local.dashboards : "${dashboard.folder}-${dashboard.name}" => dashboard }
-  provider = grafana.stack
+  provider = grafana.stack_0
 
   folder      = grafana_folder.teams[each.value.folder].uid
   config_json = jsonencode(merge({ "title" = each.value.name }, each.value.definition))

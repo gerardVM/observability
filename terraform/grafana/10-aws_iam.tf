@@ -1,5 +1,5 @@
 resource "aws_iam_role" "grafana_cloud" {
-  name = "grafana_cloud"
+  name = "AWSGrafanaCloudIntegrationRole"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -22,7 +22,7 @@ resource "aws_iam_role" "grafana_cloud" {
 }
 
 resource "aws_iam_role_policy" "cloudwatch_integration" {
-  name = "cloudwatch_integration"
+  name = "AWSGrafanaCloudIntegrationPolicy"
   role = aws_iam_role.grafana_cloud.id
 
   policy = jsonencode({

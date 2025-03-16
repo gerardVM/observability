@@ -15,6 +15,9 @@ tf-plan: tf-init
 tf-apply: tf-init
 	@cd ${TF_DIR} && terraform apply ${TF_COMPONENT}.out
 
+tf-fmt:
+	@cd ${TF_DIR} && terraform fmt
+
 traces-test:
 	@cd ${TRACES_DIR} && docker-compose build --no-cache
 	@cd ${TRACES_DIR} && docker-compose up

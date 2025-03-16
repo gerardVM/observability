@@ -3,7 +3,7 @@ locals {
 
   service_accounts = flatten([
     for stack in local.stacks : [
-      for service_account in stack.service_accounts : {
+      for service_account in try(stack.service_accounts, {}) : {
         stack    = stack.name
         name     = service_account.name
         role     = service_account.role
@@ -12,7 +12,7 @@ locals {
   }]])
 
   sa_tokens = flatten([
-    for service_account in local.service_accounts : [
+    for service_account in try(local.service_accounts, {}) : [
       for token in service_account.tokens : {
         stack           = service_account.stack
         service_account = service_account.name
